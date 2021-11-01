@@ -12,5 +12,19 @@ if __name__ == "__main__":
         if window == login_window and event == sg.WIN_CLOSED:
             break
 
-        if window == login_window and event == 'button_logar':
-            print(f"Bem vindo {values['email_or_phone']}!")
+        if window == login_window and event == 'login_button':
+            print('Button Login OK')
+
+        if window == login_window and event == 'register_button':
+            register_window = windows.register_window()
+            login_window.hide()
+
+        if window == register_window and event == sg.WIN_CLOSED:
+            break
+
+        if window == register_window and event == 'register_button':
+            print('Button Register OK')
+
+        if window == register_window and event == 'login_button':
+            login_window.un_hide()
+            register_window.hide()
