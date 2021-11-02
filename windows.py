@@ -5,8 +5,8 @@ def login_window():
     sg.theme('Reddit')
 
     layout = [[sg.Text('Login', font='Arial 24 bold')],
-              [sg.Text('Email ou Telefone:', font='Arial 12', justification='left', size=(100, 1))],
-              [sg.Input(key='email_or_phone', size=(30, 1), font='Arial 12')],
+              [sg.Text('Email:', font='Arial 12', justification='left', size=(100, 1))],
+              [sg.Input(key='email', size=(30, 1), font='Arial 12')],
               [sg.Text('Senha:', font='Arial 12', justification='left', size=(100, 1))],
               [sg.Input(key='password', size=(30, 1), password_char='*', font='Arial 12')],
               [sg.Button('Logar', key='login_button', size=(10, 1), font='Arial 14', button_color=('#FFFFFF', '#44CA2F'), border_width=2)],
@@ -24,8 +24,8 @@ def register_window():
     layout = [[sg.Text('Cadastro', font='Arial 24 bold')],
               [sg.Text('Nome Completo:', font='Arial 12', justification='left', size=(100, 1))],
               [sg.Input(key='full_name', size=(30, 1), font='Arial 12')],
-              [sg.Text('Email ou Telefone:', font='Arial 12', justification='left', size=(100, 1))],
-              [sg.Input(key='email_or_phone', size=(30, 1), font='Arial 12')],
+              [sg.Text('Email:', font='Arial 12', justification='left', size=(100, 1))],
+              [sg.Input(key='email', size=(30, 1), font='Arial 12')],
               [sg.Text('Senha:', font='Arial 12', justification='left', size=(100, 1))],
               [sg.Input(key='password', size=(30, 1), password_char='*', font='Arial 12')],
               [sg.Button('Criar conta', key='register_button', size=(10, 1), font='Arial 14', button_color=('#FFFFFF', '#44CA2F'), border_width=2)],
