@@ -1,6 +1,7 @@
 import windows
 
 import PySimpleGUI as sg
+import sqlite3
 
 
 if __name__ == "__main__":
@@ -23,7 +24,13 @@ if __name__ == "__main__":
             break
 
         if window == register_window and event == 'register_button':
-            print('Button Register OK')
+            name, email, password = values['full_name'], values['email'], values['password']
+            database = sqlite3.connect('database_Login_GUI.db')
+            cursor = database.cursor()
+            insert_values = f"""INSERT INTO user_data (name, email, password) VALUES ('{name}', '{email}', '{password}')"""
+            cursor.execute(insert_values)
+            database.commit()
+            database.close()
 
         if window == register_window and event == 'login_button':
             login_window.un_hide()
