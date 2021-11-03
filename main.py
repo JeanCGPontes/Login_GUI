@@ -15,7 +15,21 @@ if __name__ == "__main__":
             break
 
         if window == login_window and event == 'login_button':
-            print('Button Login OK')
+            email, password = values['email'], values['password']
+
+            if email == '':
+                if password == '':
+                    windows.popup_no_input_data()
+                else:
+                    windows.popup_incomplete_registration()
+
+            else:
+                try:
+                    name, email, password = functions.check_user_exists(email, password)
+                    windows.popup_login_successfully(name)
+
+                except TypeError:
+                    windows.popup_unregistered_user()
 
         if window == login_window and event == 'register_button':
             register_window = windows.register_window()
@@ -28,16 +42,21 @@ if __name__ == "__main__":
             name, email, password = values['full_name'], values['email'], values['password']
 
             if name and email and password != '':
-                database = sqlite3.connect('database_Login_GUI.db')
-                cursor = database.cursor()
-                insert_values = f"""INSERT INTO user_data (name, email, password) VALUES ('{name}', '{email}', '{password}')"""
-                cursor.execute(insert_values)
-                database.commit()
-                database.close()
+                return_check_email = functions.check_email(email)
 
-                windows.popup_success_registered()
-                register_window.hide()
-                login_window.un_hide()
+                if return_check_email is not None:
+                    print('Usuário já cadastrado com este email!')
+
+                else:
+                    database = sqlite3.connect('database_Login_GUI.db')
+                    cursor = database.cursor()
+                    cursor.execute("INSERT INTO user_data VALUES (?, ?, ?)", (name, email, password))
+                    database.commit()
+                    database.close()
+
+                    windows.popup_success_registered()
+                    register_window.hide()
+                    login_window.un_hide()
 
             elif name == '':
                 if email == '':
