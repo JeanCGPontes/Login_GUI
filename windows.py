@@ -38,8 +38,26 @@ def register_window():
 
 
 def popup_success_registered():
-    layout = [[sg.Text('Cadastro realizado! \nBem vindo!', font='Arial 14', justification='center')],
+    layout = [[sg.Text('Cadastro realizado! \nBem vindo!', font='Arial 12 bold', justification='center')],
               [sg.Button('Fazer login', font='Arial 12', key='login_buttton', button_color=('#FFFFFF', '#44CA2F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
+
+
+def popup_incomplete_registration():
+    layout = [[sg.Text('Faltam dados a serem inseridos!', font='Arial 12 bold', justification='center')],
+              [sg.Button('OK', font='Arial 12', key='ok', button_color=('#FFFFFF', '#EF0F0F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
+
+
+def popup_no_input_data():
+    layout = [[sg.Text('Nenhum dado inserido!', font='Arial 12 bold', justification='center')],
+              [sg.Button('OK', font='Arial 12', key='ok', button_color=('#FFFFFF', '#EF0F0F'), border_width=2, size=(14, 1))]]
 
     window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
 
