@@ -5,7 +5,8 @@ import sqlite3
 
 
 if __name__ == "__main__":
-    login_window, register_window = windows.login_window(), None
+    login_window = windows.login_window()
+    register_window = None
 
     while True:
         window, event, values = sg.read_all_windows()
@@ -32,6 +33,10 @@ if __name__ == "__main__":
             database.commit()
             database.close()
 
-        if window == register_window and event == 'login_button':
-            login_window.un_hide()
+            windows.popup_success_registered()
             register_window.hide()
+            login_window.un_hide()
+
+        if window == register_window and event == 'login_button':
+            register_window.hide()
+            login_window.un_hide()
