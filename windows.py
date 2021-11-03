@@ -62,3 +62,21 @@ def popup_no_input_data():
     window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
 
     return window
+
+
+def popup_login_successfully(name):
+    layout = [[sg.Text(f'Login efetuado com sucesso \nBem vindo {name}!', font='Arial 12 bold', justification='center')],
+              [sg.Button('OK', font='Arial 12', key='ok', button_color=('#FFFFFF', '#44CA2F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
+
+
+def popup_unregistered_user():
+    layout = [[sg.Text(f'Usuário ainda não cadastrado!', font='Arial 12 bold', justification='center')],
+              [sg.Button('OK', font='Arial 12', key='ok', button_color=('#FFFFFF', '#EF0F0F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
