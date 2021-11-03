@@ -35,3 +35,12 @@ def register_window():
     window = sg.Window('Cadastro', layout, size=(300, 300), element_justification='center', finalize=True)
 
     return window
+
+
+def popup_success_registered():
+    layout = [[sg.Text('Cadastro realizado! \nBem vindo!', font='Arial 14', justification='center')],
+              [sg.Button('Fazer login', font='Arial 12', key='login_buttton', button_color=('#FFFFFF', '#44CA2F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
