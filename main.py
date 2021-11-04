@@ -45,7 +45,7 @@ if __name__ == "__main__":
                 return_check_email = functions.check_email(email)
 
                 if return_check_email is not None:
-                    print('Usuário já cadastrado com este email!')
+                    windows.popup_email_already_registered()
 
                 else:
                     database = sqlite3.connect('database_Login_GUI.db')
