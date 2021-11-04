@@ -80,3 +80,12 @@ def popup_unregistered_user():
     window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
 
     return window
+
+
+def popup_email_already_registered():
+    layout = [[sg.Text(f'Este email já está sendo usado!', font='Arial 12 bold', justification='center')],
+              [sg.Button('OK', font='Arial 12', key='ok', button_color=('#FFFFFF', '#EF0F0F'), border_width=2, size=(14, 1))]]
+
+    window = sg.Window('', layout, disable_close=True, element_justification='center').read(close=True)
+
+    return window
